@@ -1,5 +1,7 @@
 package models;
 
+import controllers.VehicleList;
+
 public interface VehicleManagement {
     void add();
 
@@ -7,9 +9,17 @@ public interface VehicleManagement {
     
     void update();
 
+    void searchmenu();
+
+    void search_by_code();
+
+    void search_by_name();
+
+    boolean check();
+
     void savetoFile();
 
     void display();
 
-    void readFile();
+    VehicleList readFile();
 }
