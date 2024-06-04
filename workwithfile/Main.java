@@ -29,6 +29,7 @@ public class Main {
             switch(choice) {
                 case 1:
                     vehicle_list.add();
+                    break;
                 case 2:
                     boolean res = vehicle_list.check();
                     if (res) {
@@ -36,18 +37,25 @@ public class Main {
                     } else {
                         System.out.println("NO VEHICLE FOUND!");
                     }
+                    break;
                 case 3:
                     vehicle_list.update();
+                    break;
                 case 4:
                     vehicle_list.remove();
+                    break;
                 case 5:
                     vehicle_list.searchmenu();
+                    break;
                 case 6:
                     vehicle_list.displaymenu();
+                    break;
                 case 7:
                     vehicle_list.savetoFile();
+                    break;
                 case 8:
                     vehicle_list.displayinfile();
+                    break;
                 case 9:
                     System.out.println("Exiting...");
                     sc.close();
