@@ -141,15 +141,6 @@ public class VehicleList extends ArrayList<Vehicle> implements VehicleManagement
     }
 
     @Override
-    public void display() {
-        VehicleList vehicleList = this.readFile();
-        for (Vehicle vehicle : vehicleList) {
-            System.out.println(vehicle.toString());
-        }
-
-    }
-
-    @Override
     public VehicleList readFile() {
 
         VehicleList res = new VehicleList();
@@ -236,5 +227,148 @@ public class VehicleList extends ArrayList<Vehicle> implements VehicleManagement
                     System.out.println("Invalid choice. Please choose again!");
             }
         }
-    }    
+    }
+
+    @Override
+    public void displaymenu() {
+        VehicleList vehicleList = this;
+        while (true) {
+            System.out.println("______Display Menu______");
+            System.out.println("1. DISPLAY ALL.");
+            System.out.println("2. DISPLAY BY TYPE.");
+            System.out.println("3. GO BACK TO MAIN MENU.");
+
+            Scanner sc = new Scanner(System.in);
+            Integer choice = sc.nextInt();
+            sc.nextLine();
+
+            switch(choice) {
+                case 1:
+                    vehicleList.displayall();
+                    break;
+                case 2:
+                    vehicleList.displaybytype();
+                    break;
+                case 3:
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please choose again!");
+            }
+        }
+    }
+
+    @Override
+    public void displayall() {
+        VehicleList vehicleList = this;
+        int count = 0;
+        if (vehicleList.isEmpty() == true) {
+            System.out.println("THERE IS NO VEHICLE IN SHOWROOM!");
+            return;
+        } else {
+            int n = vehicleList.size();
+            Vehicle[] temp = new Vehicle[n];
+      
+            for (int i = 0; i < n; i++) {
+                temp[i] = vehicleList.get(i);
+            }
+      
+            for (int i = 0; i < n - 1; i++) {
+                int maxIndex = i;
+                for (int j = i + 1; j < n; j++) {
+                    if (temp[j].getPrice() > temp[maxIndex].getPrice()) {
+                        maxIndex = j;
+                    }
+                }
+            
+                    Vehicle tempVar = temp[i];
+                    temp[i] = temp[maxIndex];
+                    temp[maxIndex] = tempVar;
+                }
+      
+            for (int i = 0; i < n; i++) {
+                vehicleList.set(i, temp[i]);
+            }
+
+            for (Vehicle vehicle : vehicleList) {
+                System.out.println("______VEHICLE #______" + count);
+                vehicle.toString();
+                count += 1;
+            }
+        }
+    }
+
+    @Override
+    public void displaybytype() {
+        VehicleList vehicleList = this;
+      
+        if (vehicleList.isEmpty()) {
+          System.out.println("THERE IS NO VEHICLE IN SHOWROOM!");
+          return;
+        } else {
+            Scanner sc = new Scanner(System.in);
+            Integer count = 0;
+
+            System.out.println("ENTER VEHICLE'S TYPE: ");
+            String displaytype = sc.nextLine();
+      
+            System.out.println("______KIND OF DISPLAY______");
+            System.out.println("1. NORMAL DISPLAY.");
+            System.out.println("2. DESCENDING DISPLAY.");
+            System.out.println("Please choose!!");
+            Integer choice = sc.nextInt();
+      
+          switch (choice) {
+            case 1:
+              for (Vehicle vehicle : vehicleList) {
+                if (vehicle.getType().equals(displaytype)) {
+                  System.out.println("______VEHICLE #______" + count + ": " + vehicle.toString());
+                  count++;
+                }
+              }
+              break;
+      
+            case 2:
+                int n = vehicleList.size();
+                Vehicle[] temp = new Vehicle[n];
+      
+                for (int i = 0; i < n; i++) {
+                    temp[i] = vehicleList.get(i);
+                }
+      
+                for (int i = 0; i < n - 1; i++) {
+                    int maxIndex = i;
+                    for (int j = i + 1; j < n; j++) {
+                    if (temp[j].getPrice() > temp[maxIndex].getPrice()) {
+                        maxIndex = j;
+                    }
+                    }
+            
+                    Vehicle tempVar = temp[i];
+                    temp[i] = temp[maxIndex];
+                    temp[maxIndex] = tempVar;
+                }
+      
+                for (int i = 0; i < n; i++) {
+                    vehicleList.set(i, temp[i]);
+                }
+      
+                for (Vehicle vehicle : vehicleList) {
+                    if (vehicle.getType().equals(displaytype)) {
+                    System.out.println("______VEHICLE #______" + count + ": " + vehicle.toString());
+                    count++;
+                    }
+                }
+                break;
+      
+            default:
+                break;
+            }
+            }
+        }
+
+    @Override
+    public void displayinfile() {
+        VehicleList vehicleList = this.readFile();
+        vehicleList.displaymenu();
+    }
 }

@@ -1,8 +1,5 @@
 package models;
-
-import java.io.Serializable;
-
-public class Vehicle implements Serializable {
+public class Vehicle {
     private String id;
     private String name;
     private String color;
@@ -10,11 +7,7 @@ public class Vehicle implements Serializable {
     private String brand;
     private String type;
     private int productYear;
-
-    public Vehicle() {
-        
-    }
-
+    
     public Vehicle(String id, String name, String color, double price, String brand, String type, int productYear) {
         this.id = id;
         this.name = name;
@@ -25,7 +18,6 @@ public class Vehicle implements Serializable {
         this.productYear = productYear;
     }
 
-    
     public String getId() {
         return id;
     }
@@ -80,12 +72,6 @@ public class Vehicle implements Serializable {
 
     public void setProductYear(int productYear) {
         this.productYear = productYear;
-    }
-
-    @Override
-    public String toString() {
-        return "Vehicle [id=" + id + ", name=" + name + ", color=" + color + ", price=" + price + ", brand=" + brand
-                + ", type=" + type + ", productYear=" + productYear + "]";
     }
 
 }

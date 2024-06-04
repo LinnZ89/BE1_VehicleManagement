@@ -19,7 +19,13 @@ public interface VehicleManagement {
 
     void savetoFile();
 
-    void display();
+    void displaymenu();
+
+    void displayall();
+
+    void displaybytype();
+
+    void displayinfile();
 
     VehicleList readFile();
 }

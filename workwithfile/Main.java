@@ -5,7 +5,7 @@ import java.util.Scanner;
 import controllers.VehicleList;
 import models.VehicleManagement;
 
-public class WorkWithFile {
+public class Main {
     public static void main(String[] args) {
         VehicleManagement vehicle_list = new VehicleList();
 
@@ -29,7 +29,6 @@ public class WorkWithFile {
             switch(choice) {
                 case 1:
                     vehicle_list.add();
-                    break;
                 case 2:
                     boolean res = vehicle_list.check();
                     if (res) {
@@ -37,26 +36,18 @@ public class WorkWithFile {
                     } else {
                         System.out.println("NO VEHICLE FOUND!");
                     }
-                    break;
                 case 3:
                     vehicle_list.update();
-                    break;
                 case 4:
                     vehicle_list.remove();
-                    break;
                 case 5:
                     vehicle_list.searchmenu();
-                    break;
                 case 6:
-                    vehicle_list.display();
-                    break;
+                    vehicle_list.displaymenu();
                 case 7:
                     vehicle_list.savetoFile();
-                    break;
                 case 8:
-                    vehicle_list.readFile();
-                    vehicle_list.display();
-                    break;
+                    vehicle_list.displayinfile();
                 case 9:
                     System.out.println("Exiting...");
                     sc.close();
