@@ -74,4 +74,10 @@ public class Vehicle {
         this.productYear = productYear;
     }
 
+    @Override
+    public String toString() {
+        return "Vehicle [id=" + id + ", name=" + name + ", color=" + color + ", price=" + price + ", brand=" + brand
+                + ", type=" + type + ", productYear=" + productYear + "]";
+    }
+    
 }
