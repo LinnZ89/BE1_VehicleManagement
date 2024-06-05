@@ -151,7 +151,7 @@ public class VehicleList extends ArrayList<Vehicle> implements VehicleManagement
 
     @Override
     public void savetoFile() {
-        try (FileOutputStream fileOutput = new FileOutputStream("data\\Vehicle.txt");
+        try (FileOutputStream fileOutput = new FileOutputStream("data\\Vehicle.dat");
              ObjectOutputStream write = new ObjectOutputStream(fileOutput)) {
             write.writeObject(this);
             System.out.println("Saved Successfully!");
@@ -162,18 +162,20 @@ public class VehicleList extends ArrayList<Vehicle> implements VehicleManagement
 
     @Override
     public VehicleList readFile() {
-        VehicleList res = new VehicleList();
-        try (FileInputStream fileInput = new FileInputStream("data\\Vehicle.txt");
+        VehicleList vehicleList = new VehicleList();
+        try (FileInputStream fileInput = new FileInputStream("data\\Vehicle.dat");
              ObjectInputStream read = new ObjectInputStream(fileInput)) {
-            res = (VehicleList) read.readObject();
+            vehicleList = (VehicleList) read.readObject();
+            read.close();
             System.out.println("Read Successfully!");
         } catch (EOFException eofException) {
             System.out.println("Read Failed!");
         } catch (IOException | ClassNotFoundException exception) {
             exception.printStackTrace();
         }
-        return res;
+        return vehicleList;
     }
+
 
     @Override
     public void search_by_code() {
