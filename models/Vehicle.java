@@ -1,5 +1,5 @@
 package models;
-public class Vehicle {
+public class Vehicle implements Serializable {
     private String id;
     private String name;
     private String color;
